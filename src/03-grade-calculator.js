@@ -26,4 +26,21 @@
  */
 export function calculateGrade(score, hasExtraCredit) {
   // Your code here
+  if (score < 0 || score > 100 || Number.isNaN(score)) return "INVALID";
+
+  let baseScore = score;
+
+  if (hasExtraCredit) baseScore += 5;
+  baseScore = baseScore > 100 ? 100 : baseScore;
+
+  let grade;
+
+  if (baseScore >= 90 && baseScore <= 100) grade = "A";
+  else if (baseScore >= 80 && baseScore <= 89) grade = "B";
+  else if (baseScore >= 70 && baseScore <= 79) grade = "C";
+  else if (baseScore >= 60 && baseScore <= 69) grade = "D";
+  else if (baseScore >= 0 && baseScore <= 59) grade = "F";
+  else grade = "INVALID";
+
+  return grade;
 }
